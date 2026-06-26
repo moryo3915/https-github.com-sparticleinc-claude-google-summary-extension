@@ -1,16 +1,16 @@
 ---
-name: Bug report
-about: Create a report to help us improve
+name: バグ報告
+about: 改善に役立つ報告を作成する
 title: ''
 labels: ''
 assignees: ''
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+**バグの内容**
+発生しているバグについて、明確かつ簡潔に説明してください。
 
-**Desktop (please complete the following information):**
+**デスクトップ環境（以下の情報をご記入ください）：**
 
-- OS: [e.g. Windows]
-- Browser [e.g. chrome, brave]
-- Version [e.g. 1.15.1]
+- OS: [例：Windows]
+- ブラウザ [例：chrome、brave]
+- バージョン [例：1.15.1]
