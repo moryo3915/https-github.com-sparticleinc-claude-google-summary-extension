@@ -11,7 +11,8 @@
     "128": "logo-128.png"
   },
   "host_permissions": [
-    "https://*.openai.com/"
+    "https://*.openai.com/",
+    "https://stooq.com/*"
   ],
   "permissions": [
     "storage",

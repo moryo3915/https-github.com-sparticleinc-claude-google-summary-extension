@@ -30,6 +30,10 @@ function App() {
     Browser.tabs.create({ url: 'chrome://extensions/shortcuts' })
   }, [])
 
+  const openNikkei225Page = useCallback(() => {
+    Browser.tabs.create({ url: Browser.runtime.getURL('nikkei225.html') })
+  }, [])
+
   return (
     <div className="glarity--flex glarity--flex-col glarity--h-full glarity--popup">
       <div className="glarity--mb-1 glarity--flex glarity--flex-row glarity--items-center glarity--px-1">
@@ -47,6 +51,13 @@ function App() {
           for faster access.
         </p>
       )}
+      <button
+        type="button"
+        onClick={openNikkei225Page}
+        className="glarity--btn glarity--btn__primary glarity--btn__block"
+      >
+        日経225 ヒートマップ & 投資家情報
+      </button>
     </div>
   )
 }
