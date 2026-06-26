@@ -77,6 +77,65 @@
     }
   }
 
+  &__chart-status {
+    color: #888;
+    font-size: 13px;
+  }
+
+  &__chart-note {
+    color: #666;
+    font-size: 12px;
+    margin: 0 0 8px;
+  }
+
+  &__chart-wrap {
+    width: 100%;
+  }
+
+  &__chart-svg {
+    width: 100%;
+    height: 220px;
+    display: block;
+  }
+
+  &__chart-area {
+    fill: rgba(100, 149, 207, 0.18);
+    stroke: none;
+  }
+
+  &__chart-line {
+    fill: none;
+    stroke: #6495cf;
+    stroke-width: 2;
+  }
+
+  &__chart-crosshair {
+    stroke: #999;
+    stroke-width: 1;
+    stroke-dasharray: 3 3;
+  }
+
+  &__chart-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+  }
+
+  &__chart-tooltip {
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  &__chart-axis {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #999;
+    margin-top: 2px;
+  }
+
   &__legend {
     display: flex;
     flex-wrap: wrap;
@@ -250,6 +309,10 @@
 
     &__list tr:hover {
       background: #222;
+    }
+
+    &__chart-tooltip {
+      color: #eee;
     }
 
     &__footer {

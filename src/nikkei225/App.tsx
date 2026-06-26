@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import NikkeiChart from './Chart'
 import { DETAILED_COUNT, MACRO_GROUP_INFO, MARKET_SNAPSHOT, STOCKS, StockEntry } from './data'
 import './styles.scss'
 
@@ -61,6 +62,11 @@ function App() {
             </span>
           ))}
         </p>
+      </section>
+
+      <section className="glarity--nikkei225__card glarity--nikkei225__chart">
+        <h2>過去1年間のチャート(日足)</h2>
+        <NikkeiChart />
       </section>
 
       <section className="glarity--nikkei225__legend">

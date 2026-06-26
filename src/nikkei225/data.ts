@@ -86,6 +86,31 @@ export const MARKET_SNAPSHOT = {
   ],
 }
 
+export interface MonthlyPoint {
+  label: string
+  close: number
+  sourceUrl: string
+}
+
+// 日経公式「指数リポート」(indexes.nikkei.co.jp/atoz/...)の月次終値。
+// 過去1年分の日足データがネットワーク制約等で取得できない場合のフォールバック表示用。
+export const MONTHLY_HISTORY: MonthlyPoint[] = [
+  { label: '2025/05', close: 37965.10, sourceUrl: 'https://indexes.nikkei.co.jp/atoz/2025/06/202505.html' },
+  { label: '2025/06', close: 40487.39, sourceUrl: 'https://indexes.nikkei.co.jp/atoz/2025/07/202506.html' },
+  { label: '2025/07', close: 41069.82, sourceUrl: 'https://indexes.nikkei.co.jp/atoz/2025/08/202507.html' },
+  { label: '2025/08', close: 42718.47, sourceUrl: 'https://indexes.nikkei.co.jp/atoz/2025/09/202508.html' },
+  { label: '2025/09', close: 44932.63, sourceUrl: 'https://indexes.nikkei.co.jp/atoz/2025/10/202509.html' },
+  { label: '2025/10', close: 52411.34, sourceUrl: 'https://indexes.nikkei.co.jp/atoz/2025/11/202510.html' },
+  { label: '2025/11', close: 50253.91, sourceUrl: 'https://indexes.nikkei.co.jp/atoz/2025/12/202511.html' },
+  { label: '2025/12', close: 50339.48, sourceUrl: 'https://indexes.nikkei.co.jp/atoz/2026/01/202512.html' },
+  { label: '2026/01', close: 53322.85, sourceUrl: 'https://indexes.nikkei.co.jp/atoz/2026/02/202601.html' },
+  { label: '2026/02', close: 58850.27, sourceUrl: 'https://indexes.nikkei.co.jp/atoz/2026/03/202602.html' },
+  { label: '2026/03', close: 51063.72, sourceUrl: 'https://indexes.nikkei.co.jp/atoz/2026/04/202603.html' },
+  { label: '2026/04', close: 59284.92, sourceUrl: 'https://indexes.nikkei.co.jp/atoz/2026/05/202604.html' },
+  { label: '2026/05', close: 66329.50, sourceUrl: 'https://indexes.nikkei.co.jp/atoz/2026/06/202605.html' },
+  { label: '2026/06/26', close: 69360.88, sourceUrl: 'https://www.nikkei.com/article/DGXZQOFL261RUTW6A620C2000000/' },
+]
+
 const SRC_GENERAL = 'WebSearch調査(2026/6/26時点、Yahoo!ファイナンス・日経電子版・各社IR等の検索結果を集約)'
 
 export const STOCKS: StockEntry[] = [
