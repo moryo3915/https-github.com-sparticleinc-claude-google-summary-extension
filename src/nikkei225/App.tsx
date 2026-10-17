@@ -20,7 +20,7 @@ function App() {
       </header>
 
       <section className="glarity--nikkei225__card glarity--nikkei225__snapshot">
-        <h2>本日の市場概況({MARKET_SNAPSHOT.asOf})</h2>
+        <h2>最新の市場概況({MARKET_SNAPSHOT.asOf})</h2>
         <p className="glarity--nikkei225__price">
           {MARKET_SNAPSHOT.close}
           <span className="glarity--nikkei225__change">{MARKET_SNAPSHOT.change}</span>
@@ -28,6 +28,7 @@ function App() {
         <p>{MARKET_SNAPSHOT.note}</p>
         <p>{MARKET_SNAPSHOT.cause}</p>
 
+        <p className="glarity--nikkei225__sources">{MARKET_SNAPSHOT.contributionLabel}</p>
         <div className="glarity--nikkei225__contrib">
           <div>
             <h3>寄与度プラス上位</h3>
@@ -78,11 +79,11 @@ function App() {
         ))}
         <span className="glarity--nikkei225__legend-item">
           <i className="glarity--nikkei225__legend-swatch--up" />
-          本日値上がり(確認済)
+          直近値上がり(確認済)
         </span>
         <span className="glarity--nikkei225__legend-item">
           <i className="glarity--nikkei225__legend-swatch--down" />
-          本日値下がり(確認済)
+          直近値下がり(確認済)
         </span>
       </section>
 
@@ -163,7 +164,7 @@ function App() {
       <footer className="glarity--nikkei225__footer">
         <p>
           ※ タイルの大きさは正式な指数ウェイトではなく、影響度の目安(3段階)です。色は業種グループを表します。
-          本日の値動き(枠線の赤=上昇/青=下落)は報道で確認できた銘柄のみ表示しています。
+          直近の値動き(枠線の赤=上昇/青=下落)は報道で確認できた銘柄のみ表示しています。
           最新かつ正式な構成銘柄・ウェイトは
           <a
             href="https://indexes.nikkei.co.jp/nkave/index/component?idx=nk225"

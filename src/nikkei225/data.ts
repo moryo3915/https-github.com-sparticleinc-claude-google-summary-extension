@@ -1,7 +1,7 @@
 // 日経平均株価(日経225)ヒートマップ用データ
 //
 // 注意: このデータはClaude (claude-sonnet-4-6) がWeb検索結果をもとに
-// 2026年6月26日時点で作成したスナップショットです。本拡張機能が動作する
+// 2026年10月17日時点で作成したスナップショットです。本拡張機能が動作する
 // サンドボックス環境のネットワーク制約上、225銘柄すべてをリアルタイムで
 // 自動取得することはできず、以下の方針でデータを構成しています。
 //
@@ -10,7 +10,7 @@
 // 2. 残りの銘柄は、銘柄コード・銘柄名・業種のみを掲載しています(訓練データ
 //    および2025年10月・2026年4月の入れ替え発表の確認結果に基づくベスト
 //    エフォートの一覧で、完全性・最新性を保証するものではありません)。
-// 3. 「本日の市場概況」は2026年6月26日の実際の報道(日本経済新聞・株探等)
+// 3. 「最新の市場概況」は2026年10月16日大引けの実際の報道(日本経済新聞・株探等)
 //    に基づく実データです。
 //
 // 最新かつ正式な構成銘柄・ウェイトは日経公式サイトでご確認ください:
@@ -67,22 +67,31 @@ export interface StockEntry {
 }
 
 export const MARKET_SNAPSHOT = {
-  asOf: '2026年6月26日 大引け',
-  close: '69,360.88円',
-  change: '-3,005.46円 (-4.15%)',
-  note: '年間最大、歴代3番目の下げ幅。値上がり114銘柄・値下がり109銘柄・変わらず2銘柄。',
+  asOf: '2026年10月16日 大引け(最新の取引日)',
+  close: '65,324.29円',
+  change: '+898.34円 (+1.39%)',
+  note: '7営業日ぶりの反発。TOPIXは+66.66ポイントの4,066.00。始値64,925.29円、高値65,712.30円、安値64,800.90円。今週の終値は前週末比3,706円安。',
   cause:
-    'メモリー(DRAM/NAND)価格の急騰でAI投資が減速しかねないとの懸念が広がり、国内外のAI・半導体関連株が軒並み売られた。原油価格上昇による企業業績への懸念も重荷となった。',
-  topPositive: [{ code: '7203', name: 'トヨタ自動車', contribution: '+11.31pt(株価+2.5%)' }],
+    '前日までの大幅安を受け、AI・半導体関連株に買い戻しが入った。15日に好決算を発表したベイカレントやSHIFTがストップ高まで買われるなど、「AI利活用」銘柄の物色が目立った。',
+  contributionLabel: '直近で寄与度を確認できた日: 2026年10月1日(終値68,956.72円、+2,203.00円)',
+  topPositive: [
+    { code: '6857', name: 'アドバンテスト', contribution: 'プラス寄与1位(東京エレクトロンと2銘柄で約1,000円超押し上げ)' },
+    { code: '8035', name: '東京エレクトロン', contribution: 'プラス寄与2位' },
+    { code: '9984', name: 'ソフトバンクグループ', contribution: 'プラス寄与3位' },
+    { code: '9983', name: 'ファーストリテイリング', contribution: 'プラス寄与4位' },
+    { code: '4062', name: 'イビデン', contribution: 'プラス寄与5位' },
+  ],
   topNegative: [
-    { code: '9984', name: 'ソフトバンクグループ', contribution: 'マイナス寄与上位' },
-    { code: '8035', name: '東京エレクトロン', contribution: 'マイナス寄与上位' },
-    { code: '6857', name: 'アドバンテスト', contribution: 'マイナス寄与上位' },
+    { code: '8766', name: '東京海上ホールディングス', contribution: 'マイナス寄与上位' },
+    { code: '4568', name: '第一三共', contribution: 'マイナス寄与上位' },
+    { code: '4519', name: '中外製薬', contribution: 'マイナス寄与上位' },
+    { code: '8058', name: '三菱商事', contribution: 'マイナス寄与上位' },
+    { code: '2914', name: 'JT', contribution: 'マイナス寄与上位' },
   ],
   sources: [
-    { label: '日経平均終値3005円安の6万9360円 過去3番目の下げ幅 - 日本経済新聞', url: 'https://www.nikkei.com/article/DGXZQOFL261RUTW6A620C2000000/' },
-    { label: '日経平均 大引け｜急反落、AI・半導体関連株が軒並み安(6月26日) - 株探', url: 'https://kabutan.jp/news/marketnews/?b=n202606261054' },
-    { label: '日経平均寄与度ランキング［2026年6月26日］ - 株式ちゃんねる', url: 'https://stock.f-frontier.com/2026/06/26/234224/' },
+    { label: '日経平均大引け 7日ぶり反発 898円高の6万5324円 - 日本経済新聞', url: 'https://www.nikkei.com/article/DGXZQOFL160EV0W6A011C2000000/' },
+    { label: '日経平均は７営業日ぶり大幅反発、終値で６万５０００円台回復(16日大引け) - Yahoo!ファイナンス', url: 'https://finance.yahoo.co.jp/news/detail/3ba3eb9e3a3e43845390c9234527b3211fb393dc' },
+    { label: '【↑】日経平均 大引け｜7日ぶり反発、AI・半導体関連に買い戻し(10月16日) - 株探', url: 'https://kabutan.jp/news/marketnews/?b=n202610160962' },
   ],
 }
 
@@ -108,10 +117,15 @@ export const MONTHLY_HISTORY: MonthlyPoint[] = [
   { label: '2026/03', close: 51063.72, sourceUrl: 'https://indexes.nikkei.co.jp/atoz/2026/04/202603.html' },
   { label: '2026/04', close: 59284.92, sourceUrl: 'https://indexes.nikkei.co.jp/atoz/2026/05/202604.html' },
   { label: '2026/05', close: 66329.50, sourceUrl: 'https://indexes.nikkei.co.jp/atoz/2026/06/202605.html' },
-  { label: '2026/06/26', close: 69360.88, sourceUrl: 'https://www.nikkei.com/article/DGXZQOFL261RUTW6A620C2000000/' },
+  { label: '2026/06', close: 70062.32, sourceUrl: 'https://indexes.nikkei.co.jp/atoz/2026/07/202606.html' },
+  { label: '2026/07', close: 64362.02, sourceUrl: 'https://kumanichi.com/articles/2020096' },
+  { label: '2026/08', close: 66311.93, sourceUrl: 'https://kumanichi.com/articles/2030868' },
+  // 9月末は10月1日の終値68,956.72円と前日比+2,203.00円から逆算した値
+  { label: '2026/09', close: 66753.72, sourceUrl: 'https://gentosha-go.com/articles/-/82177' },
+  { label: '2026/10/16', close: 65324.29, sourceUrl: 'https://www.nikkei.com/article/DGXZQOFL160EV0W6A011C2000000/' },
 ]
 
-const SRC_GENERAL = 'WebSearch調査(2026/6/26時点、Yahoo!ファイナンス・日経電子版・各社IR等の検索結果を集約)'
+const SRC_GENERAL = 'WebSearch調査(2026/10/17時点、Yahoo!ファイナンス・日経電子版・各社IR等の検索結果を集約)'
 
 export const STOCKS: StockEntry[] = [
   // ---- 大型・主要36銘柄(投資家向け実データあり) ----
@@ -122,24 +136,21 @@ export const STOCKS: StockEntry[] = [
     source: SRC_GENERAL,
   } },
   { code: '9984', name: 'ソフトバンクグループ', sector: '情報・通信業', group: 'telecom', tier: 'A', detail: {
-    priceNote: '2026/6/26はAI・半導体懸念でマイナス寄与上位',
+    priceNote: '半導体関連の主力株(2026/6/26のAI・半導体懸念売りでマイナス寄与上位、2026/10/1はプラス寄与上位)',
     dividendYield: '予想配当利回り 0.15%',
     earnings: '直近期: OpenAI関連のAI投資拡大で売上高7兆7,987億円(+7.7%)、純利益5兆23億円(+333.7%)の大幅増益。',
-    todayMove: 'down',
     source: SRC_GENERAL,
   } },
   { code: '8035', name: '東京エレクトロン', sector: '電気機器', group: 'electronics', tier: 'A', detail: {
-    priceNote: '2026/6/26はAI・半導体懸念でマイナス寄与上位',
+    priceNote: '半導体関連の主力株(2026/6/26のAI・半導体懸念売りでマイナス寄与上位、2026/10/1はプラス寄与上位)',
     dividendYield: '配当方針: 連結配当性向重視(具体的数値は要確認)',
     earnings: '2026年3月期4Q: 8.6%増収、11.9%営業増益。2027年3月期上期は33%増収・42%営業増益を予想。',
-    todayMove: 'down',
     source: SRC_GENERAL,
   } },
   { code: '6857', name: 'アドバンテスト', sector: '電気機器', group: 'electronics', tier: 'A', detail: {
-    priceNote: '2026/6/26はメモリー価格高騰懸念でマイナス寄与上位',
+    priceNote: '半導体テスタ大手(2026/6/26はメモリー価格高騰懸念で下落、2026/10/1はプラス寄与1位)',
     dividendYield: '配当方針: 連結配当性向目安あり(具体的数値は要確認)',
     earnings: '2026年3月期: 売上高1兆1,286億円(+44.7%)、営業利益4,991億円(+118.8%)。AI向け半導体テスタ需要拡大で大幅増収増益。',
-    todayMove: 'down',
     source: SRC_GENERAL,
   } },
   { code: '6146', name: 'ディスコ', sector: '電気機器', group: 'electronics', tier: 'A', detail: {
@@ -209,10 +220,9 @@ export const STOCKS: StockEntry[] = [
     source: SRC_GENERAL,
   } },
   { code: '6367', name: 'ダイキン工業', sector: '機械', group: 'machinery', tier: 'A', detail: {
-    priceNote: '2026/6/26は主要プラス寄与銘柄の一つ',
+    priceNote: '2026/6/26に主要プラス寄与銘柄の一つ(当日時点の情報)',
     dividendYield: '配当利回り 1.53%',
     earnings: '2026年3月期: 増収増益。売上高5兆150億円(+5.5%)、営業利益4,149億円(+3.3%)。',
-    todayMove: 'up',
     source: SRC_GENERAL,
   } },
   { code: '7974', name: '任天堂', sector: 'その他製品', group: 'service', tier: 'A', detail: {
@@ -222,10 +232,9 @@ export const STOCKS: StockEntry[] = [
     source: SRC_GENERAL,
   } },
   { code: '9433', name: 'KDDI', sector: '情報・通信業', group: 'telecom', tier: 'A', detail: {
-    priceNote: '2026/6/26は主要プラス寄与銘柄の一つ',
+    priceNote: '2026/6/26に主要プラス寄与銘柄の一つ(当日時点の情報)',
     dividendYield: '配当: 累進的増配方針(具体的利回りは要確認)',
     earnings: '2026年3月期: 売上高6兆719億円(+4.1%)、営業利益1兆991億円(+1.1%)、純利益7,071億円(+7.9%)の増収増益。',
-    todayMove: 'up',
     source: SRC_GENERAL,
   } },
   { code: '6758', name: 'ソニーグループ', sector: '電気機器', group: 'electronics', tier: 'A', detail: {
@@ -325,10 +334,9 @@ export const STOCKS: StockEntry[] = [
     source: SRC_GENERAL,
   } },
   { code: '7203', name: 'トヨタ自動車', sector: '輸送用機器', group: 'auto', tier: 'A', detail: {
-    priceNote: '2026/6/26 終値2,768円(+2.5%)、寄与度+11.31pt(プラス寄与トップ)',
+    priceNote: '2026/6/26時点: 終値2,768円(+2.5%)、寄与度+11.31pt(プラス寄与トップ)',
     dividendYield: '配当利回り 3.70%(2026年3月期は年間95円・6期連続増配の見込み)',
     earnings: '2026年3月期: 増収減益。売上高50兆6,849億円(+5.5%、過去最高)、営業利益3兆7,662億円(-21.5%)。',
-    todayMove: 'up',
     source: SRC_GENERAL,
   } },
   { code: '8306', name: '三菱UFJフィナンシャル・グループ', sector: '銀行業', group: 'financial', tier: 'A', detail: {
@@ -361,7 +369,13 @@ export const STOCKS: StockEntry[] = [
   { code: '3101', name: '東洋紡', sector: '繊維製品', group: 'materials', tier: 'C' },
   { code: '3401', name: '帝人', sector: '繊維製品', group: 'materials', tier: 'C' },
   { code: '3402', name: '東レ', sector: '繊維製品', group: 'materials', tier: 'B' },
-  { code: '3697', name: 'SHIFT', sector: '情報・通信業', group: 'telecom', tier: 'C' },
+  { code: '3697', name: 'SHIFT', sector: '情報・通信業', group: 'telecom', tier: 'C', detail: {
+    priceNote: '2026/10/16は好決算(10/15発表)を受けストップ高まで買われた',
+    dividendYield: '配当: 要確認',
+    earnings: '2026年10月15日に好決算を発表(詳細数値は未確認)。',
+    todayMove: 'up',
+    source: 'WebSearch調査(日本経済新聞 2026/10/16 他)',
+  } },
   { code: '3863', name: '日本製紙', sector: 'パルプ・紙', group: 'materials', tier: 'C' },
   { code: '4004', name: 'レゾナック・ホールディングス', sector: '化学', group: 'materials', tier: 'B' },
   { code: '4005', name: '住友化学', sector: '化学', group: 'materials', tier: 'C' },
