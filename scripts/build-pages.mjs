@@ -11,9 +11,15 @@ async function buildPages() {
   }
 
   await fs.ensureDir(docsDir)
-  await fs.copy(`${builtDir}/nikkei225.html`, `${docsDir}/index.html`)
-  await fs.copy(`${builtDir}/nikkei225.css`, `${docsDir}/nikkei225.css`)
-  await fs.copy(`${builtDir}/nikkei225.js`, `${docsDir}/nikkei225.js`)
+  // 1ファイルで完結する HTML にする(ダブルクリックで開け、どこへ置いても動く)
+  const css = await fs.readFile(`${builtDir}/nikkei225.css`, 'utf8')
+  const js = await fs.readFile(`${builtDir}/nikkei225.js`, 'utf8')
+  const html = (await fs.readFile(`${builtDir}/nikkei225.html`, 'utf8'))
+    .replace('<link rel="stylesheet" href="nikkei225.css" />', () => `<style>\n${css}\n</style>`)
+    .replace('<script src="nikkei225.js"></script>', () => `<script>\n${js.replace(/<\/script/gi, '<\\/script')}\n</script>`)
+  await fs.writeFile(`${docsDir}/index.html`, html)
+  await fs.remove(`${docsDir}/nikkei225.css`)
+  await fs.remove(`${docsDir}/nikkei225.js`)
 
   console.log('GitHub Pages用の静的ファイルを docs/ に出力しました。')
 }
